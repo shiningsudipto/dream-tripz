@@ -1,0 +1,26 @@
+/.next                      # Next.js build folder (auto-generated)
+/node_modules                # Node.js packages (auto-generated)
+/public                      # Public directory for static files (accessible via URL)
+│   ├── /icons               # Icons for the app
+│   └── /images              # Image files accessible from the web
+│
+/src                         # Main source code folder
+│   ├── /app                 # Next.js 13+ app folder for server-side components
+│
+│   ├── /assets              # Static assets (e.g., fonts, logos)
+│   │   ├── /icons           # Application icons
+│   │   └── /images          # Images used in the app
+│
+│   ├── /components          # Reusable React components
+│   │   ├── /home            # Components specific to the homepage (e.g., sections)
+│   │   ├── /layouts         # Layout components (e.g., header, footer, page wrappers)
+│   │   ├── /shared          # Shared, reusable components (e.g., buttons, forms)
+│   │   └── /ui              # UI elements, such as modals or dropdowns
+│
+│   ├── /constants           # Constants used across the app (e.g., URLs, API keys)
+│   ├── /lib                 # Library code (e.g., helper functions, API requests)
+│   ├── /types               # TypeScript types/interfaces
+│   └── /utils               # Utility functions and helpers
+|   |__ /styles              # CSS files
+│
+/ui                          # UI design of this site
