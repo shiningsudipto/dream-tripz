@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Mulish, Poppins } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/shared/Navbar";
 
 export const poppins = Poppins({
   weight: ["500", "600", "700", "800", "900"],
@@ -23,7 +24,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={mulish.className}>{children}</body>
+      <body className={mulish.className}>
+        <Navbar />
+        {children}
+      </body>
     </html>
   );
 }
