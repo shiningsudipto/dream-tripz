@@ -34,5 +34,5 @@ body {
 }
 
 .container {
-  @apply lg:px-[96px];
+  @apply lg:px-[96px] px-5;
 }
