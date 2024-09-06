@@ -1,8 +1,15 @@
 "use client";
 import Drawer from "react-modern-drawer";
 import "react-modern-drawer/dist/index.css";
-import { useState } from "react";
-const CustomDrawer = ({ label, children }) => {
+import { ReactNode, useState } from "react";
+
+type TDrawer = {
+  label: ReactNode;
+  children: ReactNode;
+  size?: string;
+};
+
+const CustomDrawer = ({ label, size = "200px", children }: TDrawer) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDrawer = () => {
@@ -19,7 +26,7 @@ const CustomDrawer = ({ label, children }) => {
         onClose={toggleDrawer}
         direction="right"
         className=""
-        size="200px"
+        size={size}
       >
         {children}
       </Drawer>
