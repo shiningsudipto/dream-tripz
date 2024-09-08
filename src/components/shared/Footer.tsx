@@ -8,8 +8,8 @@ import { IoMailSharp } from "react-icons/io5";
 
 const Footer = () => {
   return (
-    <footer className="md:fixed mt-20 bottom-0 left-0 right-0   text-gray-800 ">
-      <div className="container pb-[50px] pt-[10px]  px-[114px] bg-gradient-to-l from-[#ffffff] via-[#ddfffe] to-[#ffffff]">
+    <footer className=" text-gray-800 ">
+      <div className="container py-[60px] mt-[60px] bg-gradient-to-l from-[#ffffff] via-[#ddfffe] to-[#ffffff]">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Company Logo Section */}
           <div className="flex flex-col items-center md:items-start mb-6 md:mb-0">
