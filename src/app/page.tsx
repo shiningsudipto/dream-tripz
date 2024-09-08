@@ -8,7 +8,7 @@ import { josefinSans } from "./layout";
 export default function Home() {
   return (
     <main className="">
-      <section className="container flex justify-between bg-gradient-to-t from-[#ffffff] via-lightBlue/15 to-[#ffffff] py-5">
+      <section className="container flex lg:flex-row flex-col justify-between gap-y-10 bg-gradient-to-t from-[#ffffff] via-lightBlue/15 to-[#ffffff] py-5">
         <div className="lg:w-[50%]">
           <div className="flex items-center gap-5">
             <h2
@@ -19,10 +19,11 @@ export default function Home() {
             <Image src={earthImg} height={30} width={30} alt="earth" />
           </div>
           <h1
-            className={`${josefinSans.className} text-6xl font-bold leading-[80px] my-7`}
+            className={`${josefinSans.className} lg:text-6xl text-4xl font-bold lg:leading-[80px] md:my-7 my-5`}
           >
-            Discover A <br /> <span className="text-primary">Beautiful</span>{" "}
-            <br /> Place With <span className="text-primary">Us</span>
+            Discover A <br className="md:bloc hidden" />{" "}
+            <span className="text-primary">Beautiful</span> <br /> Place With{" "}
+            <span className="text-primary">Us</span>
           </h1>
           <h3 className="text-text-lighter">
             The Travelers Choice Best Of The Best awards go to Destinations That
@@ -38,14 +39,14 @@ export default function Home() {
             height={30}
             width={50}
             alt="bird-img"
-            className="absolute lg:top-10"
+            className="absolute lg:top-10 right-0 top-0"
           />
           <Image
             src={featherImg}
             height={30}
             width={50}
             alt="bird-img"
-            className="absolute top-0 lg:right-0"
+            className="absolute top-0 lg:right-0 left-0"
           />
         </div>
       </section>
