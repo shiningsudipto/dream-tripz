@@ -1,5 +1,8 @@
 import Image from "next/image";
 import earthImg from "@/assets/images/earth.png";
+import travelBagImg from "@/assets/images/banner-img.png";
+import birdImg from "@/assets/images/bird1.png";
+import featherImg from "@/assets/images/feather.png";
 import { josefinSans } from "./layout";
 
 export default function Home() {
@@ -26,7 +29,25 @@ export default function Home() {
             Receive High Rating From Guest.
           </h3>
         </div>
-        <div className="lg:w-[50%]"></div>
+        <div className="lg:w-[50%] relative">
+          <div className="flex justify-end">
+            <Image src={travelBagImg} height={600} width={500} alt="earth" />
+          </div>
+          <Image
+            src={birdImg}
+            height={30}
+            width={50}
+            alt="bird-img"
+            className="absolute lg:top-10"
+          />
+          <Image
+            src={featherImg}
+            height={30}
+            width={50}
+            alt="bird-img"
+            className="absolute top-0 lg:right-0"
+          />
+        </div>
       </section>
     </main>
   );
