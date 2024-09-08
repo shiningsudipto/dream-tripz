@@ -1,10 +1,11 @@
-import type { Metadata } from "next";
-import { Mulish, Poppins } from "next/font/google";
-import "./globals.css";
+import Footer from "@/components/shared/Footer";
 import Navbar from "@/components/shared/Navbar";
+import type { Metadata } from "next";
+import { Mulish, Josefin_Sans } from "next/font/google";
+import "./globals.css";
 
-export const poppins = Poppins({
-  weight: ["500", "600", "700", "800", "900"],
+export const josefinSans = Josefin_Sans({
+  weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
 });
 const mulish = Mulish({
@@ -27,6 +28,7 @@ export default function RootLayout({
       <body className={mulish.className}>
         <Navbar />
         {children}
+        <Footer></Footer>
       </body>
     </html>
   );

@@ -1,18 +1,17 @@
-import { BiMessageDetail } from "react-icons/bi";
-import { FiPhoneCall } from "react-icons/fi";
-import { FaFacebookF, FaTwitter, FaLinkedinIn } from "react-icons/fa";
-import { RiInstagramFill } from "react-icons/ri";
-import Image from "next/image";
-import logo from "../../../public/dream-tripz-logo.png";
 import { menuLinks } from "@/constants/menuLinks.const";
+import Image from "next/image";
+import { BiMessageDetail } from "react-icons/bi";
+import { FaBars, FaFacebookF, FaLinkedinIn, FaTwitter } from "react-icons/fa";
+import { FiPhoneCall } from "react-icons/fi";
+import { RiInstagramFill } from "react-icons/ri";
+import logo from "../../../public/dream-tripz-logo.png";
 import CustomDrawer from "../ui/CustomDrawer";
-import { FaBars } from "react-icons/fa";
 const Navbar = () => {
   return (
     <>
       <nav className="">
         {/* sub navbar */}
-        <div className="container hidden md:flex justify-between bg-primary py-2 text-white">
+        <div className="container mx-auto hidden md:flex justify-between bg-primary py-2 text-white">
           <div className="flex gap-x-5">
             <p className="flex items-center gap-x-3">
               <BiMessageDetail /> dreamtripz@gmail.com{" "}
