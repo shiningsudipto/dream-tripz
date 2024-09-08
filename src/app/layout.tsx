@@ -1,7 +1,7 @@
 import Footer from "@/components/shared/Footer";
 import Navbar from "@/components/shared/Navbar";
 import type { Metadata } from "next";
-import { Mulish, Josefin_Sans } from "next/font/google";
+import { Josefin_Sans, Mulish } from "next/font/google";
 import "./globals.css";
 
 export const josefinSans = Josefin_Sans({

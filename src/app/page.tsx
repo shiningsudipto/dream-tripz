@@ -1,8 +1,10 @@
-import Image from "next/image";
-import earthImg from "@/assets/images/earth.png";
 import travelBagImg from "@/assets/images/banner-img.png";
 import birdImg from "@/assets/images/bird1.png";
+import earthImg from "@/assets/images/earth.png";
 import featherImg from "@/assets/images/feather.png";
+
+import SponsorsSection from "@/components/Sections/sponsors";
+import Image from "next/image";
 import { josefinSans } from "./layout";
 
 export default function Home() {
@@ -50,6 +52,11 @@ export default function Home() {
           />
         </div>
       </section>
+
+      {/* Sponsors Sections */}
+      <>
+        <SponsorsSection></SponsorsSection>
+      </>
     </main>
   );
 }
