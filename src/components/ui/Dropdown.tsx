@@ -1,5 +1,4 @@
 import Select from "react-dropdown-select";
-import "./style.scss";
 
 interface Option {
   name: string;
