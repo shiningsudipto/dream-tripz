@@ -3,6 +3,7 @@ import birdImg from "@/assets/images/bird1.png";
 import earthImg from "@/assets/images/earth.png";
 import featherImg from "@/assets/images/feather.png";
 
+import FeaturedBlogSection from "@/components/Sections/featured-blog";
 import SponsorsSection from "@/components/Sections/sponsors";
 import Image from "next/image";
 import { josefinSans } from "./layout";
@@ -52,7 +53,8 @@ export default function Home() {
           />
         </div>
       </section>
-
+      {/* Featured-Blog-Section */}
+      <FeaturedBlogSection></FeaturedBlogSection>
       {/* Sponsors Sections */}
       <>
         <SponsorsSection></SponsorsSection>
