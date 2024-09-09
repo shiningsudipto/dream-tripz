@@ -37,3 +37,7 @@ body {
 .container {
   @apply lg:px-[96px] px-5;
 }
+
+.user-avatar {
+  @apply rounded-[50%] object-cover h-[60px] max-w-[60px] border-4 border-white absolute shadow-md;
+}

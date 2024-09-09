@@ -7,6 +7,7 @@ import FeaturedBlogSection from "@/components/Sections/featured-blog";
 import SponsorsSection from "@/components/Sections/sponsors";
 import Image from "next/image";
 import { josefinSans } from "./layout";
+import Search from "@/components/home/Search";
 
 export default function Home() {
   return (
@@ -52,6 +53,9 @@ export default function Home() {
             className="absolute top-0 lg:right-0 left-0"
           />
         </div>
+      </section>
+      <section>
+        <Search />
       </section>
       {/* Featured-Blog-Section */}
       <FeaturedBlogSection></FeaturedBlogSection>
