@@ -11,7 +11,7 @@ import {
 const blogs = [
   {
     id: 1,
-    title: "Exploring the Beauty ",
+    title: "Exploring the Beauty",
     location: "Mountain Range",
     comments: 12,
     content:
@@ -61,17 +61,20 @@ const blogs = [
 
 const FeaturedBlogSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [activeButton, setActiveButton] = useState<"next" | "prev">("next");
   const [expandedIds, setExpandedIds] = useState<number[]>([]);
 
   const handleNext = () => {
-    if (currentIndex < blogs.length - 3) {
+    if (currentIndex < blogs.length - 1) {
       setCurrentIndex(currentIndex + 1);
+      setActiveButton("next");
     }
   };
 
   const handlePrev = () => {
     if (currentIndex > 0) {
       setCurrentIndex(currentIndex - 1);
+      setActiveButton("prev");
     }
   };
 
@@ -84,32 +87,40 @@ const FeaturedBlogSection = () => {
   const isExpanded = (id: number) => expandedIds.includes(id);
 
   return (
-    <section className="container mx-auto py-10 px-4">
+    <section className="container mx-auto py-10 px-4  mt-[190px]">
       {/* Header Section */}
       <div className="flex justify-between items-center mb-8">
-        <h2 className="text-2xl font-bold">Featured Blogs</h2>
+        <h2 className="text-2xl font-bold">Featured Blog Posts</h2>
         <div className="flex space-x-4">
           <button
             onClick={handlePrev}
-            className="text-gray-600 hover:text-black"
+            className={`text-gray-600 rounded-full p-2 transition-all ${
+              activeButton === "prev"
+                ? "bg-[#003349] text-white"
+                : "hover:bg-[#003349] hover:text-white"
+            }`}
           >
-            <FaChevronLeft size={24} />
+            <FaChevronLeft size={20} />
           </button>
           <button
             onClick={handleNext}
-            className="text-gray-600 hover:text-black"
+            className={`text-gray-600 rounded-full p-2 transition-all ${
+              activeButton === "next"
+                ? "bg-[#003349] text-white"
+                : "hover:bg-[#003349] hover:text-white"
+            }`}
           >
-            <FaChevronRight size={24} />
+            <FaChevronRight size={20} />
           </button>
         </div>
       </div>
 
       {/* Blog Cards */}
-      <div className="flex gap-6 overflow-hidden">
+      <div className="flex gap-6 overflow-hidden transition-all duration-300 ease-in-out">
         {blogs.slice(currentIndex, currentIndex + 3).map((blog) => (
           <div
             key={blog.id}
-            className="w-[calc(33.333%-1rem)] bg-white shadow-md rounded-lg p-4 flex-shrink-0"
+            className="w-full sm:w-[calc(50%-1rem)] md:w-[calc(33.333%-1rem)] bg-white shadow-md rounded-lg p-4 my-2 flex-shrink-0"
           >
             <Image
               src={blog.image}
@@ -125,24 +136,35 @@ const FeaturedBlogSection = () => {
               </div>
               <div className="flex items-center text-gray-700">
                 <FaComments className="mr-1" />
-                {blog.comments}
+                Comments {blog.comments}
               </div>
             </div>
             <h3 className="mt-4 font-semibold text-lg">{blog.title}</h3>
 
             {/* Content with Read More/Read Less functionality */}
             <p className="text-gray-600 mt-2 text-sm">
-              {isExpanded(blog.id)
-                ? blog.content
-                : blog.content.slice(0, 100) + "..."}
+              {isExpanded(blog.id) ? (
+                <>
+                  {blog.content}
+                  <span
+                    className="text-gray-600 cursor-pointer ml-2"
+                    onClick={() => toggleReadMore(blog.id)}
+                  >
+                    Read less
+                  </span>
+                </>
+              ) : (
+                <>
+                  {blog.content.slice(0, 100)}{" "}
+                  <span
+                    className="text-gray-600 cursor-pointer"
+                    onClick={() => toggleReadMore(blog.id)}
+                  >
+                    Read more...
+                  </span>
+                </>
+              )}
             </p>
-
-            <div
-              className="mt-4 text-sm text-blue-500 text-right cursor-pointer"
-              onClick={() => toggleReadMore(blog.id)}
-            >
-              {isExpanded(blog.id) ? "Read less" : "Read more"}
-            </div>
 
             <div className="flex items-center mt-4">
               <Image
@@ -152,9 +174,9 @@ const FeaturedBlogSection = () => {
                 height={30}
                 className="rounded-full"
               />
-              <div className="ml-3 text-sm">
+              <div className="ml-3 text-sm text-gray-900">
                 <p className="font-semibold">{blog.author}</p>
-                <p className="text-gray-500">{blog.date}</p>
+                <p className="">{blog.date}</p>
               </div>
             </div>
           </div>
