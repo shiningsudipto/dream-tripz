@@ -5,40 +5,40 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const offers = [
   {
-    id: 1,
-    smallTitle: "Exclusive Experience",
-    offerTitle: "50% Off on Mountain Adventure",
-    discount: "50% OFF",
-    shortText:
-      "Book now and enjoy a thrilling mountain adventure at half the price! This offer is limited.",
-    image: "/offers/offer-1.jpg",
-  },
-  {
-    id: 2,
-    smallTitle: "Luxury Getaway",
-    offerTitle: "30% Off on Beach Resort Stay",
-    discount: "30% OFF",
-    shortText:
-      "Relax on the beach with this amazing offer for a luxurious resort stay. Book now!",
-    image: "/offers/offer-2.jpg",
-  },
-  {
     id: 3,
     smallTitle: "Desert Safari",
-    offerTitle: "25% Off on Desert Adventure",
+    offerTitle:
+      "25% Off Desert Safari – Adventure awaits. Limited spots available!",
     discount: "25% OFF",
-    shortText:
-      "Experience the magic of the desert with this exclusive offer. Limited slots available!",
+    shortText: "Explore city, special rates.",
     image: "/offers/offer-3.jpg",
   },
   {
     id: 4,
     smallTitle: "City Lights",
-    offerTitle: "20% Off on New York City Tour",
+    offerTitle:
+      "30% Off Beach Resort – Luxurious stay at discounted price. Book now!",
     discount: "20% OFF",
-    shortText:
-      "Explore the iconic city of New York with a special discount on all tours. Book your spot!",
+    shortText: "Thrilling adventure, limited slots.",
     image: "/offers/offer-4.jpg",
+  },
+  {
+    id: 1,
+    smallTitle: "Exclusive Experience",
+    offerTitle:
+      "40% Off Mountain Adventure – Experience nature at reduced rates. Reserve today!",
+    discount: "50% OFF",
+    shortText: "Relaxation at great discount.",
+    image: "/offers/offer-1.jpg",
+  },
+  {
+    id: 2,
+    smallTitle: "Luxury Getaway",
+    offerTitle:
+      "20% Off City Tours – Explore iconic landmarks at special rates.",
+    discount: "30% OFF",
+    shortText: "Exclusive desert adventure awaits.",
+    image: "/offers/offer-2.jpg",
   },
 ];
 
@@ -47,7 +47,7 @@ const OurExperienceTopOffers = () => {
   const [activeButton, setActiveButton] = useState<"next" | "prev">("next");
 
   const handleNext = () => {
-    if (currentIndex < offers.length - 1) {
+    if (currentIndex < offers.length - (window.innerWidth >= 768 ? 2 : 1)) {
       setCurrentIndex(currentIndex + 1);
       setActiveButton("next");
     }
@@ -61,10 +61,12 @@ const OurExperienceTopOffers = () => {
   };
 
   return (
-    <section className="container mx-auto py-10 px-4">
+    <section className="container mx-auto mt-[190px] px-4">
       {/* Header Section */}
       <div className="flex justify-between items-center mb-8">
-        <h2 className="text-2xl font-bold">Our Experience Top Offers</h2>
+        <h2 className="text-xl md:text-2xl font-bold">
+          Our Experience Top Offers
+        </h2>
         <div className="flex space-x-4">
           <button
             onClick={handlePrev}
@@ -90,40 +92,51 @@ const OurExperienceTopOffers = () => {
       </div>
 
       {/* Offers Cards */}
-      <div className="flex gap-6 overflow-hidden">
-        {offers.slice(currentIndex, currentIndex + 2).map((offer) => (
-          <div
-            key={offer.id}
-            className="w-full md:w-[calc(50%-1rem)] bg-white shadow-md rounded-lg flex-shrink-0 flex"
-          >
-            {/* Image Section - 60% with Padding */}
-            <div className="w-3/5 p-4">
-              <Image
-                src={offer.image}
-                alt={offer.offerTitle}
-                width={400}
-                height={300}
-                className="w-full h-full object-cover rounded-lg"
-              />
-            </div>
+      <div className="flex flex-col md:flex-row gap-6 overflow-hidden">
+        {offers
+          .slice(
+            currentIndex,
+            currentIndex + (window.innerWidth >= 768 ? 2 : 1)
+          )
+          .map((offer) => (
+            <div
+              key={offer.id}
+              className="w-full md:w-[calc(50%-1rem)] bg-white shadow-lg my-2 rounded-lg flex-shrink-0 flex flex-col md:flex-row"
+            >
+              {/* Image Section - 60% with Padding */}
+              <div className="w-full md:w-3/5 p-4">
+                <Image
+                  src={offer.image}
+                  alt={offer.offerTitle}
+                  width={400}
+                  height={300}
+                  className="w-full h-full object-cover rounded-lg"
+                />
+              </div>
 
-            {/* Content Section - 40% with Padding */}
-            <div className="w-2/5 p-4 flex flex-col justify-between">
-              <div>
+              {/* Content Section - 40% with Padding */}
+              <div className="w-full md:w-2/5 p-4 flex flex-col justify-between">
+                {/* Small title at the top */}
                 <h4 className="text-sm font-semibold text-gray-800">
                   {offer.smallTitle}
                 </h4>
-                <h3 className="text-xl font-bold text-gray-900 mt-2">
+
+                {/* Offer title centered in the middle */}
+                <h3 className="text-xl mt-5 font-bold text-gray-900">
                   {offer.offerTitle}
                 </h3>
-                <p className="text-gray-800 mt-2">{offer.shortText}</p>
+
+                {/* Short text at the bottom */}
+                <p className="text-gray-800 text-sm truncate mt-auto">
+                  {offer.shortText}
+                </p>
+
+                <button className="bg-[#003349] w-7/12 mx-auto rounded-full text-white text-sm py-2 px-4 mt-4 hover:bg-[#01293b] transition-all">
+                  Book Now
+                </button>
               </div>
-              <button className="bg-[#003349] text-white text-sm py-2 px-4 rounded-md mt-4 hover:bg-[#01293b] transition-all">
-                Book Now
-              </button>
             </div>
-          </div>
-        ))}
+          ))}
       </div>
     </section>
   );
