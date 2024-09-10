@@ -16,9 +16,9 @@ const SearchSelectionFields = () => {
   const [checkOutDate, setCheckOutDate] = useState<Date | null>(new Date());
 
   return (
-    <div className="shadow-lg h-[100px] w-full rounded-full p-5">
-      <div className="flex justify-between items-center">
-        <div className="border-r-2 border-secondary h-[60px]">
+    <div className="shadow-lg md:h-[100px] w-full md:rounded-full rounded-lg p-5">
+      <div className="md:flex md:justify-between grid grid-cols-2 gap-5 items-center">
+        <div className="border-r-2 border-secondary md:h-[60px]">
           <p className="flex items-center gap-2 font-medium">
             <MdOutlineDirections className="text-xl text-secondary" />
             Destination
@@ -31,7 +31,7 @@ const SearchSelectionFields = () => {
             prefix="banner-search"
           />
         </div>
-        <div className="pr-5 border-r-2 border-secondary h-[60px] text-center">
+        <div className="pr-5 md:border-r-2 border-secondary md:h-[60px] text-center">
           <p
             onClick={() => setCheckInDateModalOpen(true)}
             className="flex items-center gap-2 font-medium cursor-pointer hover:text-primary mb-1"
@@ -47,7 +47,7 @@ const SearchSelectionFields = () => {
             setDate={setCheckInDate}
           />
         </div>
-        <div className="pr-5 border-r-2 border-secondary h-[60px] text-center">
+        <div className="pr-5 border-r-2 border-secondary md:h-[60px] text-center">
           <p
             onClick={() => setCheckOutDateModalOpen(true)}
             className="flex items-center gap-2 font-medium cursor-pointer hover:text-primary mb-1"
@@ -63,7 +63,7 @@ const SearchSelectionFields = () => {
             setDate={setCheckOutDate}
           />
         </div>
-        <div className="h-[60px]">
+        <div className="md:h-[60px]">
           <p className="flex items-center gap-2 font-medium">
             <MdOutlineLock className="text-xl text-secondary" />
             Price limit
@@ -76,10 +76,13 @@ const SearchSelectionFields = () => {
             prefix="banner-search"
           />
         </div>
-        <button className="bg-primary hover:bg-primary-500 h-[40px] py-1 px-6 rounded-full text-white font-semibold">
+        <button className="md:block hidden bg-primary hover:bg-primary-500 h-[40px] py-1 px-6 rounded-full text-white font-semibold mt-5">
           Book Now
         </button>
       </div>
+      <button className="md:hidden block bg-primary hover:bg-primary-500 h-[40px] py-1 px-6 rounded-full text-white font-semibold mt-5 w-full">
+        Book Now
+      </button>
     </div>
   );
 };

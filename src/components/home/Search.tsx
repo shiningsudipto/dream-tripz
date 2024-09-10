@@ -8,7 +8,7 @@ import SearchSelectionFields from "./SearchSelectionFields";
 
 const Search = () => {
   return (
-    <div className="container flex justify-between gap-x-10 w-full">
+    <div className="container flex lg:flex-row flex-col justify-between gap-10 w-full">
       <div className="flex justify-between items-center">
         <div className="flex items-center relative">
           <Image
