@@ -41,9 +41,8 @@ const Search = () => {
           />
         </div>
         <div className="ms-[200px] text-2xl font-semibold text-center">
-          <div className="flex">
-            <Counter count={21} />
-            <p>K Happy</p>
+          <div className="flex flex-row">
+            <Counter count={21} />K <p className="ms-2"> Happy</p>
           </div>
           <p>Customer</p>
         </div>

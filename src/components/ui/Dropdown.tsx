@@ -1,4 +1,6 @@
+"use client";
 import Select from "react-dropdown-select";
+import "./style.css";
 
 interface Option {
   name: string;
@@ -7,12 +9,11 @@ interface Option {
 
 interface DropdownProps {
   label?: string;
+  prefix?: string;
   options: Option[];
   placeholder?: string;
   searchable?: boolean;
-  name: string;
-  setFieldValue: (field: string, value: any) => void;
-  values: string;
+  values?: string;
   multi?: boolean;
 }
 
@@ -21,16 +22,15 @@ const Dropdown: React.FC<DropdownProps> = ({
   options,
   placeholder = "Select...",
   searchable = false,
-  name,
-  setFieldValue,
   values = "",
   multi = false,
+  prefix,
 }) => {
   return (
     <div>
       {label && <p className="field-title">{label}</p>}
       <Select
-        className="react-dropdown-select-custom-style input-field-shadow"
+        className={`${prefix}--react-dropdown-select`}
         labelField="name"
         valueField="value"
         placeholder={placeholder}
@@ -43,12 +43,7 @@ const Dropdown: React.FC<DropdownProps> = ({
             : options.filter((option) => option.value === values)
         }
         dropdownPosition="auto"
-        onChange={(value) =>
-          setFieldValue(
-            name,
-            multi ? value.map((v) => v.value) : value[0]?.value
-          )
-        }
+        onChange={(value) => console.log(value)}
       />
     </div>
   );
