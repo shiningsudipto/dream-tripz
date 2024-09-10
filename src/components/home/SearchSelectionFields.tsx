@@ -18,7 +18,7 @@ const SearchSelectionFields = () => {
   return (
     <div className="shadow-lg md:h-[100px] w-full md:rounded-full rounded-lg p-5">
       <div className="md:flex md:justify-between grid grid-cols-2 gap-5 items-center">
-        <div className="border-r-2 border-secondary md:h-[60px]">
+        <div className="pr-5 border-r-2 border-secondary md:h-[60px]">
           <p className="flex items-center gap-2 font-medium">
             <MdOutlineDirections className="text-xl text-secondary" />
             Destination
