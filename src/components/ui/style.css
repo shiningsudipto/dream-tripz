@@ -1,0 +1,35 @@
+/* Dropdown */
+.banner-search--react-dropdown-select {
+  @apply focus-within:shadow-none;
+  border: 0 !important;
+}
+.banner-search--react-dropdown-select:focus-within {
+  box-shadow: none !important;
+}
+
+/* Calender */
+.react-calendar {
+  /* width: 378px !important; */
+  width: 100% !important;
+  border: 0 !important;
+}
+.overflow-calendar {
+  width: 378px !important;
+}
+.react-calendar__month-view__days {
+  border-top: 1px solid #d4d4d4 !important;
+  border-right: 1px solid #d4d4d4 !important;
+}
+.react-calendar__month-view__days__day {
+  border-left: 1px solid #d4d4d4 !important;
+  border-bottom: 1px solid #d4d4d4 !important;
+}
+.react-calendar__tile--active {
+  background-color: #dceeea !important;
+  color: #262626 !important;
+}
+.react-calendar__tile--rangeStart,
+.react-calendar__tile--rangeEnd {
+  background-color: var(--primary) !important;
+  color: #ffff !important;
+}
