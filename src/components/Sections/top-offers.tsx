@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const offers = [
@@ -45,9 +45,28 @@ const offers = [
 const OurExperienceTopOffers = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [activeButton, setActiveButton] = useState<"next" | "prev">("next");
+  const [itemsToShow, setItemsToShow] = useState(1);
+
+  // Update the number of items to show based on window width
+  useEffect(() => {
+    const handleResize = () => {
+      setItemsToShow(window.innerWidth >= 768 ? 2 : 1);
+    };
+
+    // Set initial value
+    handleResize();
+
+    // Add event listener to update on resize
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup event listener
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const handleNext = () => {
-    if (currentIndex < offers.length - (window.innerWidth >= 768 ? 2 : 1)) {
+    if (currentIndex < offers.length - itemsToShow) {
       setCurrentIndex(currentIndex + 1);
       setActiveButton("next");
     }
@@ -93,50 +112,45 @@ const OurExperienceTopOffers = () => {
 
       {/* Offers Cards */}
       <div className="flex flex-col md:flex-row gap-6 overflow-hidden">
-        {offers
-          .slice(
-            currentIndex,
-            currentIndex + (window.innerWidth >= 768 ? 2 : 1)
-          )
-          .map((offer) => (
-            <div
-              key={offer.id}
-              className="w-full md:w-[calc(50%-1rem)] bg-white shadow-lg my-2 rounded-lg flex-shrink-0 flex flex-col md:flex-row"
-            >
-              {/* Image Section - 60% with Padding */}
-              <div className="w-full md:w-3/5 p-4">
-                <Image
-                  src={offer.image}
-                  alt={offer.offerTitle}
-                  width={400}
-                  height={300}
-                  className="w-full h-full object-cover rounded-lg"
-                />
-              </div>
-
-              {/* Content Section - 40% with Padding */}
-              <div className="w-full md:w-2/5 p-4 flex flex-col justify-between">
-                {/* Small title at the top */}
-                <h4 className="text-sm font-semibold text-gray-800">
-                  {offer.smallTitle}
-                </h4>
-
-                {/* Offer title centered in the middle */}
-                <h3 className="text-xl mt-5 font-bold text-gray-900">
-                  {offer.offerTitle}
-                </h3>
-
-                {/* Short text at the bottom */}
-                <p className="text-gray-800 text-sm truncate mt-auto">
-                  {offer.shortText}
-                </p>
-
-                <button className="bg-[#003349] w-7/12 mx-auto rounded-full text-white text-sm py-2 px-4 mt-4 hover:bg-[#01293b] transition-all">
-                  Book Now
-                </button>
-              </div>
+        {offers.slice(currentIndex, currentIndex + itemsToShow).map((offer) => (
+          <div
+            key={offer.id}
+            className="w-full md:w-[calc(50%-1rem)] bg-white shadow-lg my-2 rounded-lg flex-shrink-0 flex flex-col md:flex-row"
+          >
+            {/* Image Section - 60% with Padding */}
+            <div className="w-full md:w-3/5 p-4">
+              <Image
+                src={offer.image}
+                alt={offer.offerTitle}
+                width={400}
+                height={300}
+                className="w-full h-full object-cover rounded-lg"
+              />
             </div>
-          ))}
+
+            {/* Content Section - 40% with Padding */}
+            <div className="w-full md:w-2/5 p-4 flex flex-col justify-between">
+              {/* Small title at the top */}
+              <h4 className="text-sm font-semibold text-gray-800">
+                {offer.smallTitle}
+              </h4>
+
+              {/* Offer title centered in the middle */}
+              <h3 className="text-xl mt-5 font-bold text-gray-900">
+                {offer.offerTitle}
+              </h3>
+
+              {/* Short text at the bottom */}
+              <p className="text-gray-800 text-sm truncate mt-auto">
+                {offer.shortText}
+              </p>
+
+              <button className="bg-[#003349] w-7/12 mx-auto rounded-full text-white text-sm py-2 px-4 mt-4 hover:bg-[#01293b] transition-all">
+                Book Now
+              </button>
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );
