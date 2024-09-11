@@ -1,6 +1,10 @@
 "use client";
 import Image from "next/image";
+
 import { useState, useEffect } from "react";
+
+import { useEffect, useState } from "react";
+
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const offers = [
@@ -45,6 +49,7 @@ const offers = [
 const OurExperienceTopOffers = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [activeButton, setActiveButton] = useState<"next" | "prev">("next");
+
   const [windowWidth, setWindowWidth] = useState<number>(0);
 
   useEffect(() => {
@@ -65,6 +70,21 @@ const OurExperienceTopOffers = () => {
     if (currentIndex < offers.length - (windowWidth >= 768 ? 2 : 1)) {
       setCurrentIndex(currentIndex + 1);
       setActiveButton("next");
+=======
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  const handleNext = () => {
+    if (isClient) {
+      const itemsToShow = window.innerWidth >= 768 ? 2 : 1;
+      if (currentIndex < offers.length - itemsToShow) {
+        setCurrentIndex(currentIndex + 1);
+        setActiveButton("next");
+      }
+
     }
   };
 
@@ -109,7 +129,14 @@ const OurExperienceTopOffers = () => {
       {/* Offers Cards */}
       <div className="flex flex-col md:flex-row gap-6 overflow-hidden">
         {offers
+
           .slice(currentIndex, currentIndex + (windowWidth >= 768 ? 2 : 1))
+
+          .slice(
+            currentIndex,
+            currentIndex + (isClient && window.innerWidth >= 768 ? 2 : 1)
+          )
+
           .map((offer) => (
             <div
               key={offer.id}
