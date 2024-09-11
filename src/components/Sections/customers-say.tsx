@@ -6,39 +6,39 @@ import { FaPlay } from "react-icons/fa";
 const customerData = [
   {
     id: 1,
-    name: "John Doe",
-    position: "CEO, Company X",
+    name: "Michael Williams",
+    position: "Founder, Startup B",
     rating: 5,
     profileImage: "/user/user-1.png",
-    videoLink: "https://www.youtube.com/embed/12uPfnvqDiI", // replace with actual video
-    review: "Our experience with this company was excellent.",
+    videoLink: "https://www.youtube.com/embed/5myfOaVzKw0",
+    review: "Fantastic team and excellent work ethics.",
   },
   {
     id: 2,
-    name: "Jane Smith",
-    position: "CMO, Company Y",
+    name: "Sarah Lee",
+    position: "COO, Enterprise C",
     rating: 4,
     profileImage: "/user/user-2.png",
-    videoLink: "https://www.youtube.com/embed/V4QhQkMsHpM", // replace with actual video
-    review: "Great quality and customer service.",
+    videoLink: "https://www.youtube.com/embed/WnMnpUxJTfA",
+    review: "Reliable services and timely delivery.",
   },
   {
     id: 3,
-    name: "David Johnson",
-    position: "CTO, Company Z",
-    rating: 5,
-    profileImage: "/user/user-3.jfif",
-    videoLink: "https://www.youtube.com/embed/12uPfnvqDiI", // replace with actual video
-    review: "We are very satisfied with the results.",
+    name: "Chris Evans",
+    position: "Director, Company D",
+    rating: 4,
+    profileImage: "/user/user-4.png",
+    videoLink: "https://www.youtube.com/embed/BB1Ro_eplMc",
+    review: "Very happy with the outcomes.",
   },
   {
     id: 4,
-    name: "Emily Brown",
-    position: "CFO, Company A",
-    rating: 4,
-    profileImage: "/user/user-4.png",
-    videoLink: "https://www.youtube.com/embed/V4QhQkMsHpM", // replace with actual video
-    review: "Professional and reliable services.",
+    name: "Sophia Williams",
+    position: "Marketing Manager, Company E",
+    rating: 5,
+    profileImage: "/user/user-5.png",
+    videoLink: "https://www.youtube.com/embed/jBrzJwsYSB8",
+    review: "Excellent service with great support.",
   },
 ];
 
@@ -61,7 +61,7 @@ const CustomersSay = () => {
       position: string;
       rating: number;
       profileImage: string;
-      videoLink: string; // replace with actual video
+      videoLink: string;
       review: string;
     }>
   ) => {
@@ -70,7 +70,7 @@ const CustomersSay = () => {
   };
 
   return (
-    <div className="container mx-auto py-16 px-4 lg:px-8">
+    <div className="container mx-auto py-10 px-4 mt-[190px]">
       <div className="flex flex-col lg:flex-row justify-between items-center">
         {/* Left Side: Title, Text, Customer Info */}
         <div className="lg:w-1/2 w-full flex flex-col justify-center relative">
@@ -123,7 +123,7 @@ const CustomersSay = () => {
 
             {!isPlaying && (
               <div
-                className="absolute inset-0 hidden lg:flex -ml-7  items-center cursor-pointer"
+                className="absolute inset-0 hidden lg:flex -ml-7 items-center cursor-pointer"
                 onClick={handleVideoPlay}
               >
                 <div className="bg-white h-12 w-12 flex items-center justify-center rounded-full shadow-xl transform transition-transform duration-300 hover:scale-110">
@@ -136,24 +136,26 @@ const CustomersSay = () => {
       </div>
 
       {/* Customer Profiles Section */}
-      <div className="mt-8 flex justify-center space-x-4">
-        {customerData.map((customer) => (
-          <div
-            key={customer.id}
-            className="avatar cursor-pointer"
-            onClick={() => handleAvatarClick(customer)}
-          >
-            <div className="w-12">
-              <Image
-                src={customer.profileImage}
-                alt={customer.name}
-                width={48}
-                height={48}
-                className="rounded-full object-cover"
-              />
+      <div className="flex justify-center mt-8">
+        <div className="avatar-group flex -space-x-6 rtl:space-x-reverse">
+          {customerData.map((customer) => (
+            <div
+              key={customer.id}
+              className="avatar cursor-pointer"
+              onClick={() => handleAvatarClick(customer)}
+            >
+              <div className="w-12">
+                <Image
+                  src={customer.profileImage}
+                  alt={customer.name}
+                  width={48}
+                  height={48}
+                  className="rounded-full object-cover"
+                />
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const offers = [
@@ -45,9 +45,25 @@ const offers = [
 const OurExperienceTopOffers = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [activeButton, setActiveButton] = useState<"next" | "prev">("next");
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    // Set the initial window size and add resize listener
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    handleResize(); // Set initial size
+    window.addEventListener("resize", handleResize); // Add resize listener
+
+    // Cleanup the listener on component unmount
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const handleNext = () => {
-    if (currentIndex < offers.length - (window.innerWidth >= 768 ? 2 : 1)) {
+    if (currentIndex < offers.length - (isMobile ? 1 : 2)) {
       setCurrentIndex(currentIndex + 1);
       setActiveButton("next");
     }
@@ -94,10 +110,7 @@ const OurExperienceTopOffers = () => {
       {/* Offers Cards */}
       <div className="flex flex-col md:flex-row gap-6 overflow-hidden">
         {offers
-          .slice(
-            currentIndex,
-            currentIndex + (window.innerWidth >= 768 ? 2 : 1)
-          )
+          .slice(currentIndex, currentIndex + (isMobile ? 1 : 2))
           .map((offer) => (
             <div
               key={offer.id}
