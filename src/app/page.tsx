@@ -9,6 +9,7 @@ import OurExperienceTopOffers from "@/components/Sections/top-offers";
 import Image from "next/image";
 import { josefinSans } from "./layout";
 import Search from "@/components/home/Search";
+import TopDestination from "@/components/home/TopDestination";
 
 export default function Home() {
   return (
@@ -58,6 +59,7 @@ export default function Home() {
       <section>
         <Search />
       </section>
+      <TopDestination />
       {/* OurExperienceTopOffers */}
       <OurExperienceTopOffers></OurExperienceTopOffers>
       {/* Featured-Blog-Section */}
