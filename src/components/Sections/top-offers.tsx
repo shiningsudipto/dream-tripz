@@ -1,10 +1,6 @@
 "use client";
 import Image from "next/image";
-
-import { useState, useEffect } from "react";
-
 import { useEffect, useState } from "react";
-
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const offers = [
@@ -12,7 +8,7 @@ const offers = [
     id: 3,
     smallTitle: "Desert Safari",
     offerTitle:
-      "25% Off Desert Safari – Adventure awaits. Limited spots available!",
+      "25% Off Desert Safari - Adventure awaits. Limited spots available!",
     discount: "25% OFF",
     shortText: "Explore city, special rates.",
     image: "/offers/offer-3.jpg",
@@ -21,7 +17,7 @@ const offers = [
     id: 4,
     smallTitle: "City Lights",
     offerTitle:
-      "30% Off Beach Resort – Luxurious stay at discounted price. Book now!",
+      "30% Off Beach Resort - Luxurious stay at discounted price. Book now!",
     discount: "20% OFF",
     shortText: "Thrilling adventure, limited slots.",
     image: "/offers/offer-4.jpg",
@@ -30,7 +26,7 @@ const offers = [
     id: 1,
     smallTitle: "Exclusive Experience",
     offerTitle:
-      "40% Off Mountain Adventure – Experience nature at reduced rates. Reserve today!",
+      "40% Off Mountain Adventure - Experience nature at reduced rates. Reserve today!",
     discount: "50% OFF",
     shortText: "Relaxation at great discount.",
     image: "/offers/offer-1.jpg",
@@ -39,7 +35,7 @@ const offers = [
     id: 2,
     smallTitle: "Luxury Getaway",
     offerTitle:
-      "20% Off City Tours – Explore iconic landmarks at special rates.",
+      "20% Off City Tours - Explore iconic landmarks at special rates.",
     discount: "30% OFF",
     shortText: "Exclusive desert adventure awaits.",
     image: "/offers/offer-2.jpg",
@@ -49,42 +45,32 @@ const offers = [
 const OurExperienceTopOffers = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [activeButton, setActiveButton] = useState<"next" | "prev">("next");
-
   const [windowWidth, setWindowWidth] = useState<number>(0);
+  const [isClient, setIsClient] = useState<boolean>(false);
 
   useEffect(() => {
     // Set initial window width
-    setWindowWidth(window.innerWidth);
+    if (typeof window !== "undefined") {
+      setWindowWidth(window.innerWidth);
+      setIsClient(true);
 
-    // Update window width on resize
-    const handleResize = () => setWindowWidth(window.innerWidth);
+      // Update window width on resize
+      const handleResize = () => setWindowWidth(window.innerWidth);
+      window.addEventListener("resize", handleResize);
 
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
-  const handleNext = () => {
-    if (currentIndex < offers.length - (windowWidth >= 768 ? 2 : 1)) {
-      setCurrentIndex(currentIndex + 1);
-      setActiveButton("next");
-=======
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
+      return () => {
+        window.removeEventListener("resize", handleResize);
+      };
+    }
   }, []);
 
   const handleNext = () => {
     if (isClient) {
-      const itemsToShow = window.innerWidth >= 768 ? 2 : 1;
+      const itemsToShow = windowWidth >= 768 ? 2 : 1;
       if (currentIndex < offers.length - itemsToShow) {
         setCurrentIndex(currentIndex + 1);
         setActiveButton("next");
       }
-
     }
   };
 
@@ -129,14 +115,7 @@ const OurExperienceTopOffers = () => {
       {/* Offers Cards */}
       <div className="flex flex-col md:flex-row gap-6 overflow-hidden">
         {offers
-
           .slice(currentIndex, currentIndex + (windowWidth >= 768 ? 2 : 1))
-
-          .slice(
-            currentIndex,
-            currentIndex + (isClient && window.innerWidth >= 768 ? 2 : 1)
-          )
-
           .map((offer) => (
             <div
               key={offer.id}
