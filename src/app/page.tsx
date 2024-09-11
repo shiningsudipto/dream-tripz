@@ -9,6 +9,7 @@ import OurExperienceTopOffers from "@/components/Sections/top-offers";
 import TrendingCategory from "@/components/Sections/trending-section";
 import Image from "next/image";
 import { josefinSans } from "./layout";
+import Search from "@/components/home/Search";
 
 export default function Home() {
   return (
@@ -55,8 +56,14 @@ export default function Home() {
           />
         </div>
       </section>
+
       {/* TrendingCategory */}
       <TrendingCategory></TrendingCategory>
+
+      <section>
+        <Search />
+      </section>
+
       {/* OurExperienceTopOffers */}
       <OurExperienceTopOffers></OurExperienceTopOffers>
       {/* Featured-Blog-Section */}
