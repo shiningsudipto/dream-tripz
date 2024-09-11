@@ -3,13 +3,14 @@ import birdImg from "@/assets/images/bird1.png";
 import earthImg from "@/assets/images/earth.png";
 import featherImg from "@/assets/images/feather.png";
 
+import Search from "@/components/home/Search";
+import CustomersSay from "@/components/Sections/customers-say";
 import FeaturedBlogSection from "@/components/Sections/featured-blog";
 import SponsorsSection from "@/components/Sections/sponsors";
 import OurExperienceTopOffers from "@/components/Sections/top-offers";
 import TrendingCategory from "@/components/Sections/trending-section";
 import Image from "next/image";
 import { josefinSans } from "./layout";
-import Search from "@/components/home/Search";
 
 export default function Home() {
   return (
@@ -64,9 +65,17 @@ export default function Home() {
         <Search />
       </section>
 
+      {/* TrendingCategory */}
+      <TrendingCategory></TrendingCategory>
+
+
+
       {/* OurExperienceTopOffers */}
       <OurExperienceTopOffers></OurExperienceTopOffers>
+      {/* CustomersSay */}
+      <CustomersSay></CustomersSay>
       {/* Featured-Blog-Section */}
+
       <FeaturedBlogSection></FeaturedBlogSection>
       {/* Sponsors Sections */}
       <>

@@ -1,6 +1,9 @@
 "use client";
 import Image from "next/image";
 
+import { useEffect, useState } from "react";
+
+
 import { useState, useEffect } from "react";
 
 import { useEffect, useState } from "react";
@@ -49,6 +52,22 @@ const offers = [
 const OurExperienceTopOffers = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [activeButton, setActiveButton] = useState<"next" | "prev">("next");
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    // Set the initial window size and add resize listener
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    handleResize(); // Set initial size
+    window.addEventListener("resize", handleResize); // Add resize listener
+
+    // Cleanup the listener on component unmount
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const [windowWidth, setWindowWidth] = useState<number>(0);
 
@@ -67,10 +86,14 @@ const OurExperienceTopOffers = () => {
   }, []);
 
   const handleNext = () => {
+
+    if (currentIndex < offers.length - (isMobile ? 1 : 2)) {
+
     if (currentIndex < offers.length - (windowWidth >= 768 ? 2 : 1)) {
+
       setCurrentIndex(currentIndex + 1);
       setActiveButton("next");
-=======
+
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
@@ -130,12 +153,16 @@ const OurExperienceTopOffers = () => {
       <div className="flex flex-col md:flex-row gap-6 overflow-hidden">
         {offers
 
+          .slice(currentIndex, currentIndex + (isMobile ? 1 : 2))
+
+
           .slice(currentIndex, currentIndex + (windowWidth >= 768 ? 2 : 1))
 
           .slice(
             currentIndex,
             currentIndex + (isClient && window.innerWidth >= 768 ? 2 : 1)
           )
+
 
           .map((offer) => (
             <div
