@@ -57,11 +57,19 @@ export default function Home() {
           />
         </div>
       </section>
+
+      {/* TrendingCategory */}
+      <TrendingCategory></TrendingCategory>
+
       <section>
         <Search />
       </section>
+
       {/* TrendingCategory */}
       <TrendingCategory></TrendingCategory>
+
+
+
       {/* OurExperienceTopOffers */}
       <OurExperienceTopOffers></OurExperienceTopOffers>
       {/* CustomersSay */}

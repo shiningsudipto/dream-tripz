@@ -1,8 +1,15 @@
+
+
 import Image from "next/image";
+
 import userImg1 from "@/assets/images/u1.webp";
 import userImg2 from "@/assets/images/u2.jpg";
 import userImg3 from "@/assets/images/u3.webp";
 import userImg4 from "@/assets/images/u4.jpg";
+
+import Image from "next/image";
+
+
 import Counter from "../ui/Counter";
 import SearchSelectionFields from "./SearchSelectionFields";
 

@@ -1,6 +1,13 @@
 "use client";
 import Image from "next/image";
+
 import { useEffect, useState } from "react";
+
+
+import { useState, useEffect } from "react";
+
+import { useEffect, useState } from "react";
+
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const offers = [
@@ -62,10 +69,45 @@ const OurExperienceTopOffers = () => {
     };
   }, []);
 
+  const [windowWidth, setWindowWidth] = useState<number>(0);
+
+  useEffect(() => {
+    // Set initial window width
+    setWindowWidth(window.innerWidth);
+
+    // Update window width on resize
+    const handleResize = () => setWindowWidth(window.innerWidth);
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   const handleNext = () => {
+
     if (currentIndex < offers.length - (isMobile ? 1 : 2)) {
+
+    if (currentIndex < offers.length - (windowWidth >= 768 ? 2 : 1)) {
+
       setCurrentIndex(currentIndex + 1);
       setActiveButton("next");
+
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  const handleNext = () => {
+    if (isClient) {
+      const itemsToShow = window.innerWidth >= 768 ? 2 : 1;
+      if (currentIndex < offers.length - itemsToShow) {
+        setCurrentIndex(currentIndex + 1);
+        setActiveButton("next");
+      }
+
     }
   };
 
@@ -110,7 +152,18 @@ const OurExperienceTopOffers = () => {
       {/* Offers Cards */}
       <div className="flex flex-col md:flex-row gap-6 overflow-hidden">
         {offers
+
           .slice(currentIndex, currentIndex + (isMobile ? 1 : 2))
+
+
+          .slice(currentIndex, currentIndex + (windowWidth >= 768 ? 2 : 1))
+
+          .slice(
+            currentIndex,
+            currentIndex + (isClient && window.innerWidth >= 768 ? 2 : 1)
+          )
+
+
           .map((offer) => (
             <div
               key={offer.id}
