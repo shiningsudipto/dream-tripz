@@ -20,6 +20,20 @@ const Slider = ({ prefix, items }: TSlider) => {
     <Swiper
       navigation={true}
       slidesPerView={4}
+      breakpoints={{
+        320: {
+          slidesPerView: 1,
+          spaceBetween: 10,
+        },
+        640: {
+          slidesPerView: 2,
+          spaceBetween: 20,
+        },
+        1024: {
+          slidesPerView: 4,
+          spaceBetween: 30,
+        },
+      }}
       spaceBetween={15}
       modules={[Navigation]}
       className={`${prefix}-swiper-container swiper-container`}
