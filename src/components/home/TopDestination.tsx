@@ -1,4 +1,6 @@
+import { topDestinations } from "@/utils/destination.utils";
 import SectionTitle from "../ui/SectionTitle";
+import Slider from "../ui/SLider";
 
 const TopDestination = () => {
   return (
@@ -8,6 +10,9 @@ const TopDestination = () => {
         subTitle="Destination"
         title="Explore Top Destination"
       />
+      <div className="mt-10">
+        <Slider prefix="" items={topDestinations} />
+      </div>
     </div>
   );
 };

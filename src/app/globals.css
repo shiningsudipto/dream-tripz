@@ -40,3 +40,18 @@ body {
 .user-avatar {
   @apply rounded-[50%] object-cover h-[60px] max-w-[60px] border-4 border-white absolute shadow-md;
 }
+
+/* swiper */
+.swiper-button-prev,
+.swiper-button-next {
+  background-color: var(--primary) !important;
+  color: white !important;
+  width: 30px !important;
+  height: 30px !important;
+  border-radius: 50% !important;
+  font-weight: 900;
+}
+.swiper-button-prev:after,
+.swiper-button-next:after {
+  font-size: 16px !important;
+}
