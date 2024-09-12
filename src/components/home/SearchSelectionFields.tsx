@@ -1,4 +1,13 @@
 "use client";
+
+import { places } from "@/utils/places.utils";
+import { prices } from "@/utils/prices.utils";
+import { useState } from "react";
+import { LuCalendarRange } from "react-icons/lu";
+import { MdOutlineDirections, MdOutlineLock } from "react-icons/md";
+import DatePicker from "../ui/DatePicker";
+import Dropdown from "../ui/Dropdown";
+
 import { MdOutlineDirections, MdOutlineLock } from "react-icons/md";
 import { LuCalendarRange } from "react-icons/lu";
 import Dropdown from "../ui/Dropdown";
@@ -6,6 +15,7 @@ import { places } from "@/utils/places.utils";
 import { useState } from "react";
 import DatePicker from "../ui/DatePicker";
 import { prices } from "@/utils/prices.utils";
+
 
 const SearchSelectionFields = () => {
   const [isCheckInDateModalOpen, setCheckInDateModalOpen] =
