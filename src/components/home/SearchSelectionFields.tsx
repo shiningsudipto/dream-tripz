@@ -1,13 +1,4 @@
 "use client";
-
-import { places } from "@/utils/places.utils";
-import { prices } from "@/utils/prices.utils";
-import { useState } from "react";
-import { LuCalendarRange } from "react-icons/lu";
-import { MdOutlineDirections, MdOutlineLock } from "react-icons/md";
-import DatePicker from "../ui/DatePicker";
-import Dropdown from "../ui/Dropdown";
-
 import { MdOutlineDirections, MdOutlineLock } from "react-icons/md";
 import { LuCalendarRange } from "react-icons/lu";
 import Dropdown from "../ui/Dropdown";
@@ -15,7 +6,6 @@ import { places } from "@/utils/places.utils";
 import { useState } from "react";
 import DatePicker from "../ui/DatePicker";
 import { prices } from "@/utils/prices.utils";
-
 
 const SearchSelectionFields = () => {
   const [isCheckInDateModalOpen, setCheckInDateModalOpen] =
@@ -26,9 +16,9 @@ const SearchSelectionFields = () => {
   const [checkOutDate, setCheckOutDate] = useState<Date | null>(new Date());
 
   return (
-    <div className="shadow-lg md:h-[100px] w-full md:rounded-full rounded-lg p-5">
+    <div className="shadow-lg w-full md:rounded-full rounded-lg p-5">
       <div className="md:flex md:justify-between grid grid-cols-2 gap-5 items-center">
-        <div className="pr-5 border-r-2 border-secondary md:h-[60px]">
+        <div className="md:h-[60px]">
           <p className="flex items-center gap-2 font-medium">
             <MdOutlineDirections className="text-xl text-secondary" />
             Destination
@@ -41,7 +31,8 @@ const SearchSelectionFields = () => {
             prefix="banner-search"
           />
         </div>
-        <div className="pr-5 md:border-r-2 border-secondary md:h-[60px] text-center">
+        <div className="md:h-[60px] md:border-r-2 border-secondary"></div>
+        <div className="md:h-[60px] text-center">
           <p
             onClick={() => setCheckInDateModalOpen(true)}
             className="flex items-center gap-2 font-medium cursor-pointer hover:text-primary mb-1"
@@ -57,7 +48,8 @@ const SearchSelectionFields = () => {
             setDate={setCheckInDate}
           />
         </div>
-        <div className="pr-5 border-r-2 border-secondary md:h-[60px] text-center">
+        <div className="md:h-[60px] md:border-r-2 border-secondary"></div>
+        <div className="md:h-[60px] text-center">
           <p
             onClick={() => setCheckOutDateModalOpen(true)}
             className="flex items-center gap-2 font-medium cursor-pointer hover:text-primary mb-1"
@@ -73,6 +65,7 @@ const SearchSelectionFields = () => {
             setDate={setCheckOutDate}
           />
         </div>
+        <div className="md:h-[60px] md:border-r-2 border-secondary"></div>
         <div className="md:h-[60px]">
           <p className="flex items-center gap-2 font-medium">
             <MdOutlineLock className="text-xl text-secondary" />
