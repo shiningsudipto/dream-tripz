@@ -21,7 +21,7 @@ const videoData = [
 const Experience = () => {
   return (
     <section className="container bg-gradient-to-t from-[#ffffff] via-lightBlue/15 to-[#ffffff]">
-      <div className="grid grid-cols-2 gap-10">
+      <div className="grid md:grid-cols-2 grid-cols-1 gap-10">
         <SliderWithPagination items={videoData} prefix="experience" />
         <div className="">
           <SectionTitle
@@ -34,7 +34,7 @@ const Experience = () => {
             hotels, restaurants and things to do received a high volume of
             above-and-beyond reviews
           </p>
-          <div className="flex items-center justify-between mt-5">
+          <div className="md:flex grid grid-cols-2 gap-5 items-center justify-between mt-5">
             <div className="flex flex-col items-center text-center bg-white rounded-xl p-3">
               <p className="text-secondary text-4xl font-bold">
                 <Counter count={20} />+
@@ -43,7 +43,7 @@ const Experience = () => {
                 Years <br /> Experience
               </p>
             </div>
-            <div className="border-r border-primary h-[60px]"></div>
+            <div className="border-r border-primary h-[60px] md:block hidden"></div>
             <div className="flex flex-col items-center text-center bg-white rounded-xl p-3">
               <p className="text-secondary text-4xl font-bold">
                 <Counter count={460} />+
@@ -52,7 +52,7 @@ const Experience = () => {
                 Trips <br /> Organized
               </p>
             </div>
-            <div className="border-r border-primary h-[60px]"></div>
+            <div className="border-r border-primary h-[60px] md:block hidden"></div>
             <div className="flex flex-col items-center text-center bg-white rounded-xl p-3">
               <p className="text-secondary text-4xl font-bold">
                 <Counter count={75} />+
@@ -61,7 +61,7 @@ const Experience = () => {
                 Countries <br /> Visited
               </p>
             </div>
-            <div className="border-r border-primary h-[60px]"></div>
+            <div className="border-r border-primary h-[60px] md:block hidden"></div>
             <div className="flex flex-col items-center text-center bg-white rounded-xl p-3">
               <p className="text-secondary text-4xl font-bold">
                 <Counter count={50} />
