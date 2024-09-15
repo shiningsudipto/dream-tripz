@@ -1,6 +1,6 @@
 import { topDestinations } from "@/utils/destination.utils";
 import SectionTitle from "../ui/SectionTitle";
-import Slider from "../ui/SLider";
+import Slider from "../ui/Slider";
 
 const TopDestination = () => {
   return (

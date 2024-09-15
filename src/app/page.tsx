@@ -11,6 +11,7 @@ import Image from "next/image";
 import { josefinSans } from "./layout";
 import TopDestination from "@/components/home/TopDestination";
 import TopOffers from "@/components/Sections/TopOffers";
+import Experience from "@/components/home/Experience";
 
 export default function Home() {
   return (
@@ -60,6 +61,7 @@ export default function Home() {
       <Search />
       {/* TrendingCategory */}
       <TrendingCategory />
+      <Experience />
       <TopDestination />
       {/* OurExperienceTopOffers */}
       <TopOffers />
