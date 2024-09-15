@@ -11,7 +11,7 @@ const TopDestination = () => {
         title="Explore Top Destination"
       />
       <div className="mt-10">
-        <Slider prefix="" items={topDestinations} />
+        <Slider prefix="" items={topDestinations} sliderType="destination" />
       </div>
     </div>
   );

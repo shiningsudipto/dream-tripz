@@ -46,7 +46,7 @@ const SliderWithPagination = ({ prefix, items }: TSliderWithPagination) => {
                 <Player url={item.video} isPlaying={playingIndex === index} />
 
                 {/* Play button on the right side */}
-                <div className="absolute top-1/2 right-0 transform -translate-y-1/2 z-[9999] flex items-center">
+                <div className="absolute top-1/2  right-0 transform -translate-y-1/2 z-[9999] flex items-center">
                   <button
                     onClick={() => handlePlay(index)}
                     className="text-white"
