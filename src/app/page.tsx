@@ -2,14 +2,15 @@ import travelBagImg from "@/assets/images/banner-img.png";
 import birdImg from "@/assets/images/bird1.png";
 import earthImg from "@/assets/images/earth.png";
 import featherImg from "@/assets/images/feather.png";
-
+import Search from "@/components/home/Search";
+import TopDestination from "@/components/home/TopDestination";
+import TopOffers from "@/components/home/TopOffers";
+import CustomersSay from "@/components/Sections/customers-say";
 import FeaturedBlogSection from "@/components/Sections/featured-blog";
 import SponsorsSection from "@/components/Sections/sponsors";
-import OurExperienceTopOffers from "@/components/Sections/top-offers";
 import TrendingCategory from "@/components/Sections/trending-section";
 import Image from "next/image";
 import { josefinSans } from "./layout";
-import Search from "@/components/home/Search";
 
 export default function Home() {
   return (
@@ -56,22 +57,18 @@ export default function Home() {
           />
         </div>
       </section>
-
+      <Search />
       {/* TrendingCategory */}
-      <TrendingCategory></TrendingCategory>
-
-      <section>
-        <Search />
-      </section>
-
+      <TrendingCategory />
+      <TopDestination />
       {/* OurExperienceTopOffers */}
-      <OurExperienceTopOffers></OurExperienceTopOffers>
+      <TopOffers />
+      {/* CustomersSay */}
+      <CustomersSay />
       {/* Featured-Blog-Section */}
-      <FeaturedBlogSection></FeaturedBlogSection>
+      <FeaturedBlogSection />
       {/* Sponsors Sections */}
-      <>
-        <SponsorsSection></SponsorsSection>
-      </>
+      <SponsorsSection />
     </main>
   );
 }

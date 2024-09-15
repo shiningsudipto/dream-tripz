@@ -1,9 +1,21 @@
 "use client";
 import Image from "next/image";
-import React, { SetStateAction, useState } from "react";
+import { useState } from "react";
 import { FaPlay } from "react-icons/fa";
 
-const customerData = [
+// Type for the customer data
+type Customer = {
+  id: number;
+  name: string;
+  position: string;
+  rating: number;
+  profileImage: string;
+  videoLink: string;
+  review: string;
+};
+
+// Sample customer data
+const customerData: Customer[] = [
   {
     id: 1,
     name: "Michael Williams",
@@ -44,7 +56,10 @@ const customerData = [
 
 const CustomersSay = () => {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [activeCustomer, setActiveCustomer] = useState(customerData[0]);
+  const [activeCustomer, setActiveCustomer] = useState<Customer>(
+    customerData[0]
+  );
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleVideoPlay = () => {
     setIsPlaying(true);
@@ -54,18 +69,15 @@ const CustomersSay = () => {
     }
   };
 
-  const handleAvatarClick = (
-    customer: SetStateAction<{
-      id: number;
-      name: string;
-      position: string;
-      rating: number;
-      profileImage: string;
-      videoLink: string;
-      review: string;
-    }>
-  ) => {
+  const handleAvatarClick = (customer: Customer) => {
     setActiveCustomer(customer);
+    setIsPlaying(false);
+    setCurrentIndex(customerData.findIndex((c) => c.id === customer.id));
+  };
+
+  const handleDotClick = (index: number) => {
+    setActiveCustomer(customerData[index]);
+    setCurrentIndex(index);
     setIsPlaying(false);
   };
 
@@ -75,17 +87,19 @@ const CustomersSay = () => {
         {/* Left Side: Title, Text, Customer Info */}
         <div className="lg:w-1/2 w-full flex flex-col justify-center relative">
           <h2 className="text-4xl font-bold mb-4 text-gray-800">
-            What Our Customers Say
+            What Our Customers Say About Us😍
           </h2>
           <p className="text-lg text-gray-600 mb-8">{activeCustomer.review}</p>
 
+          {/* Customer Info */}
           <div className="space-y-4">
-            {/* Customer Info */}
             <div>
               <p className="text-xl font-semibold text-gray-900">
                 {activeCustomer.name}
               </p>
-              <p className="text-sm text-gray-500">{activeCustomer.position}</p>
+              <p className="text-sm text-gray-800 font-semibold">
+                {activeCustomer.position}
+              </p>
             </div>
             {/* Rating */}
             <div className="flex items-center space-x-1">
@@ -98,10 +112,10 @@ const CustomersSay = () => {
             </div>
           </div>
 
-          {/* Play Button in the middle between the sections */}
+          {/* Play Button (for mobile) */}
           <div className="lg:hidden flex justify-center items-center mt-4">
             <div
-              className="bg-white rounded-full p-4 shadow-lg cursor-pointer"
+              className="bg-white h-12 w-12 rounded-full p-4 shadow-lg cursor-pointer"
               onClick={handleVideoPlay}
             >
               <FaPlay className="text-green-500 w-8 h-8" />
@@ -120,7 +134,6 @@ const CustomersSay = () => {
               allow="autoplay; encrypted-media"
               allowFullScreen
             />
-
             {!isPlaying && (
               <div
                 className="absolute inset-0 hidden lg:flex -ml-7 items-center cursor-pointer"
@@ -156,6 +169,19 @@ const CustomersSay = () => {
             </div>
           ))}
         </div>
+      </div>
+
+      {/* Slider Dots */}
+      <div className="flex mx-auto md:mr-[20%] justify-center md:justify-end">
+        {customerData.map((_, index) => (
+          <div
+            key={index}
+            onClick={() => handleDotClick(index)}
+            className={`w-3 h-3 mx-1 rounded-full cursor-pointer ${
+              currentIndex === index ? "bg-[#002B3E]" : "bg-gray-400"
+            }`}
+          />
+        ))}
       </div>
     </div>
   );
