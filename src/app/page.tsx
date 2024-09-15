@@ -5,7 +5,8 @@ import featherImg from "@/assets/images/feather.png";
 import Search from "@/components/home/Search";
 import TopDestination from "@/components/home/TopDestination";
 import TopOffers from "@/components/home/TopOffers";
-import CustomersSay from "@/components/Sections/customers-say";
+
+import CustomersSay from "@/components/home/CustomersSay";
 import FeaturedBlogSection from "@/components/Sections/featured-blog";
 import SponsorsSection from "@/components/Sections/sponsors";
 import TrendingCategory from "@/components/Sections/trending-section";
