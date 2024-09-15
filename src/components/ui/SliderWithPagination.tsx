@@ -8,7 +8,17 @@ import { FaPlayCircle } from "react-icons/fa";
 import "./style.css";
 import { FaPauseCircle } from "react-icons/fa";
 
-const SliderWithPagination = ({ prefix, items }) => {
+type TExperienceItems = {
+  label: string;
+  video: string;
+};
+
+type TSliderWithPagination = {
+  prefix: string;
+  items: TExperienceItems[];
+};
+
+const SliderWithPagination = ({ prefix, items }: TSliderWithPagination) => {
   const [playingIndex, setPlayingIndex] = useState<number | null>(null);
 
   const handlePlay = (index: number) => {
@@ -29,14 +39,14 @@ const SliderWithPagination = ({ prefix, items }) => {
         modules={[Pagination]}
         className={`${prefix}-swiper-pagination-container swiper-pagination-container relative`}
       >
-        {items.map((item, index) => {
+        {items.map((item: TExperienceItems, index: number) => {
           return (
             <SwiperSlide key={index} className="rounded-xl">
               <div className="relative">
                 <Player url={item.video} isPlaying={playingIndex === index} />
 
                 {/* Play button on the right side */}
-                <div className="absolute top-1/2 right-0 transform -translate-y-1/2 z-[9999]">
+                <div className="absolute top-1/2 right-0 transform -translate-y-1/2 z-[9999] flex items-center">
                   <button
                     onClick={() => handlePlay(index)}
                     className="text-white"
