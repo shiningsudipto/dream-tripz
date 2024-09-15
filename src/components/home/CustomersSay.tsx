@@ -3,6 +3,7 @@ import { useState } from "react";
 import { FaPlay } from "react-icons/fa";
 import { customerData, TCustomer } from "../../utils/customers.utils";
 import AvatarGroup from "../shared/AvatarGroup";
+
 const CustomersSay = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [activeCustomer, setActiveCustomer] = useState<TCustomer>(

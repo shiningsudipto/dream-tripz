@@ -33,3 +33,7 @@
   background-color: var(--primary) !important;
   color: #ffff !important;
 }
+
+.reactPlayer .div video {
+  border-radius: 20px !important;
+}
