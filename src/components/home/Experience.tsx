@@ -5,12 +5,12 @@ import SliderWithPagination from "../ui/SliderWithPagination";
 
 const videoData = [
   {
-    label: "Mountain Adventure",
-    video: "/videos/travel/t1.mp4",
-  },
-  {
     label: "City Lights",
     video: "/videos/travel/t2.mp4",
+  },
+  {
+    label: "Mountain Adventure",
+    video: "/videos/travel/t1.mp4",
   },
   {
     label: "Desert Safari",
