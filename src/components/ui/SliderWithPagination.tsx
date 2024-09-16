@@ -51,13 +51,19 @@ const SliderWithPagination = ({ prefix, items }: TSliderWithPagination) => {
                     onClick={() => handlePlay(index)}
                     className="text-white"
                   >
-                    {index != playingIndex ? (
+                    {/* {index != playingIndex ? (
                       <FaPlayCircle
                         size={60}
                         className="text-primary border-4 border-white rounded-full"
                       />
                     ) : (
                       <FaPauseCircle
+                        size={60}
+                        className="text-primary border-4 border-white rounded-full"
+                      />
+                    )} */}
+                    {index !== playingIndex && (
+                      <FaPlayCircle
                         size={60}
                         className="text-primary border-4 border-white rounded-full"
                       />

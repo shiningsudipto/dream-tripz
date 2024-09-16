@@ -107,7 +107,7 @@ const CustomersSay = () => {
               className="avatar cursor-pointer"
               onClick={() => handleAvatarClick(customer)}
             >
-              <AvatarGroup></AvatarGroup>
+              <AvatarGroup />
             </div>
           ))}
         </div>

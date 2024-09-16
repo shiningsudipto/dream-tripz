@@ -3,25 +3,16 @@ import birdImg from "@/assets/images/bird1.png";
 import earthImg from "@/assets/images/earth.png";
 import featherImg from "@/assets/images/feather.png";
 import Search from "@/components/home/Search";
-<<<<<<< HEAD
 import TopDestination from "@/components/home/TopDestination";
 import TopOffers from "@/components/home/TopOffers";
 
 import CustomersSay from "@/components/home/CustomersSay";
-=======
-import CustomersSay from "@/components/Sections/customers-say";
->>>>>>> 5dc609d1d2797a5988b7e3ea8ad56b3e2a76d942
 import FeaturedBlogSection from "@/components/Sections/featured-blog";
 import SponsorsSection from "@/components/Sections/sponsors";
 import TrendingCategory from "@/components/Sections/trending-section";
 import Image from "next/image";
 import { josefinSans } from "./layout";
-<<<<<<< HEAD
-=======
-import TopDestination from "@/components/home/TopDestination";
-import TopOffers from "@/components/Sections/TopOffers";
 import Experience from "@/components/home/Experience";
->>>>>>> 5dc609d1d2797a5988b7e3ea8ad56b3e2a76d942
 import TopPick from "@/components/home/TopPick";
 
 export default function Home() {
@@ -72,10 +63,7 @@ export default function Home() {
       <Search />
       {/* TrendingCategory */}
       <TrendingCategory />
-<<<<<<< HEAD
-=======
       <Experience />
->>>>>>> 5dc609d1d2797a5988b7e3ea8ad56b3e2a76d942
       <TopPick />
       <TopDestination />
       {/* OurExperienceTopOffers */}
