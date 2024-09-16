@@ -15,15 +15,20 @@ export type TTravelPackage = {
 
 const TopPick = () => {
   return (
-    <div className="container">
+    <div className="container pb-[70px]">
       <SectionTitle
         title="Best Tour Packages"
         subTitle="Pick"
         subTitleCircle="Top"
       />
       <div>
-        <div className="mt-10">
-          <Slider prefix="" items={travelPackages} sliderType="topPick" />
+        <div className="">
+          <Slider
+            prefix=""
+            items={travelPackages}
+            sliderType="topPick"
+            slidesPerView={3}
+          />
         </div>
       </div>
     </div>

@@ -11,21 +11,22 @@ import { FaStar } from "react-icons/fa6";
 import { IoLocationSharp } from "react-icons/io5";
 import { TTravelPackage } from "../home/TopPick";
 import { IoMdTime } from "react-icons/io";
-import { FaRegUserCircle } from "react-icons/fa";
-import { IoLocationOutline } from "react-icons/io5";
+import { PiUserCircle } from "react-icons/pi";
+import { GrLocation } from "react-icons/gr";
 import { FaDollarSign } from "react-icons/fa";
 
 type TSlider = {
   prefix?: string;
+  slidesPerView?: number;
   sliderType: "destination" | "topPick";
   items: TDestinationSlider[] | TTravelPackage[];
 };
 
-const Slider = ({ prefix, items, sliderType }: TSlider) => {
+const Slider = ({ prefix, items, sliderType, slidesPerView }: TSlider) => {
   return (
     <Swiper
       navigation={true}
-      slidesPerView={sliderType === "topPick" ? 3 : 4}
+      slidesPerView={slidesPerView}
       breakpoints={{
         320: {
           slidesPerView: 1,
@@ -36,7 +37,7 @@ const Slider = ({ prefix, items, sliderType }: TSlider) => {
           spaceBetween: 20,
         },
         1024: {
-          slidesPerView: 4,
+          slidesPerView: slidesPerView,
           spaceBetween: 30,
         },
       }}
@@ -85,33 +86,48 @@ const Slider = ({ prefix, items, sliderType }: TSlider) => {
       {sliderType === "topPick" &&
         (items as TTravelPackage[])?.map((item, index) => {
           return (
-            <SwiperSlide
-              key={index}
-              className="p-4 bg-white shadow-xl rounded-xl"
-            >
-              <Image
-                src={item.image}
-                alt={item.location}
-                height={400}
-                width={400}
-                className="w-full h-[250px] object-cover rounded-xl"
-              />
-              <h2>{item.title}</h2>
-              <div className="flex items-center justify-between">
-                <p className="flex items-center gap-1">
-                  <IoMdTime />
-                  {item.duration}
-                </p>
-                <p className="flex items-center gap-2">
-                  <FaRegUserCircle />
-                  People: {item.people}
-                </p>
-                <p className="flex items-center gap-2">
-                  <IoLocationOutline />
-                  {item.location}
-                </p>
+            <SwiperSlide key={index} className="">
+              <div className="p-4 bg-white shadow-xl rounded-xl border my-10">
+                <Image
+                  src={item.image}
+                  alt={item.location}
+                  height={400}
+                  width={400}
+                  className="w-full h-[250px] object-cover rounded-xl"
+                />
+                <h2 className="text-xl font-bold text-primary mt-5">
+                  {item.title}
+                </h2>
+                <div className="flex items-center justify-between my-3 font-medium">
+                  <p className="flex items-center gap-1">
+                    <IoMdTime className="text-secondary" />
+                    {item.duration}
+                  </p>
+                  <p className="flex items-center gap-2">
+                    <PiUserCircle className="text-secondary" />
+                    People: {item.people}
+                  </p>
+                  <p className="flex items-center gap-2">
+                    <GrLocation className="text-secondary" />
+                    {item.location}
+                  </p>
+                </div>
+                <p>{item.description.slice(0, 90)}...</p>
+                <div className="flex justify-between mt-5">
+                  <div className="flex gap-2">
+                    <p className="text-xl font-bold text-primary flex items-center">
+                      <FaDollarSign /> {item.price}
+                    </p>
+                    <p className="text-sm flex items-center mt-3">
+                      <FaDollarSign className="size-[12px]" />
+                      {item.originalPrice}
+                    </p>
+                  </div>
+                  <button className="py-2 px-6 bg-primary text-white rounded-full font-medium hover:bg-primary-500">
+                    Book Now
+                  </button>
+                </div>
               </div>
-              <p>{item.description}</p>
             </SwiperSlide>
           );
         })}
